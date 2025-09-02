@@ -3,6 +3,7 @@ import Image from 'next/image'
 export default function Page() {
   return (
     <main>
+<div className="table-wrapper">
       <table border={1} cellPadding={10} cellSpacing={0}>
         <tr>
           <th colSpan={3}>Deep Dive Into Moby-Dick</th>
@@ -58,6 +59,7 @@ export default function Page() {
           </td>
         </tr>
       </table>
+</div>
     </main>
   )
 }
