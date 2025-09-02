@@ -1,79 +1,63 @@
 import Image from 'next/image'
 
-export default function MobyDickTable() {
+export default function Page() {
   return (
-    <main className="p-4 bg-gray-50 min-h-screen">
-      {/* Responsive wrapper */}
-      <div className="overflow-x-auto">
-        <table className="w-full table-fixed border border-gray-300 border-collapse text-sm md:text-base">
-          <thead className="bg-gray-100">
-            <tr>
-              <th colSpan={3} className="border border-gray-300 p-3 text-lg md:text-xl">
-                Deep Dive Into Moby-Dick
-              </th>
-            </tr>
-            <tr>
-              <td className="border border-gray-300 p-2 font-medium">Posted By: Ivyne Muzenda</td>
-              <td className="border border-gray-300 p-2"></td>
-              <td className="border border-gray-300 p-2 font-medium">Date: 02/09/2025</td>
-            </tr>
-            <tr className="bg-gray-100">
-              <th className="border border-gray-300 p-2">Beginning</th>
-              <th className="border border-gray-300 p-2">Middle</th>
-              <th className="border border-gray-300 p-2">End</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="border border-gray-300 p-2 align-top">
-                In the beginning of Moby-Dick, Ishmael the narrator introduces himself...
-              </td>
-              <td className="border border-gray-300 p-2 align-top">
-                As the novel progresses Ishmael and his new crew settle into life aboard...
-              </td>
-              <td className="border border-gray-300 p-2 align-top">
-                In the final part of the novel, Ahab finally finds Moby-Dick...
-                <a href="" className="text-blue-600 underline hover:text-blue-800">the end</a>
-              </td>
-            </tr>
-            <tr>
-              <td className="border border-gray-300 p-2">
-                <Image
-                  src="https://i.postimg.cc/rwW1kqGZ/Screenshot-20250903-003701-Chrome.jpg"
-                  alt="Beginning"
-                  width={300}
-                  height={200}
-                  className="w-full h-auto rounded"
-                  id="img1"
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </td>
-              <td className="border border-gray-300 p-2">
-                <Image
-                  src="https://i.postimg.cc/fbD9QmRk/Screenshot-20250903-003919-Chrome.jpg"
-                  alt="Middle"
-                  width={300}
-                  height={200}
-                  className="w-full h-auto rounded"
-                  id="img2"
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </td>
-              <td className="border border-gray-300 p-2">
-                <Image
-                  src="https://i.postimg.cc/hGDrgfD4/Screenshot-20250903-004045-Chrome.jpg"
-                  alt="End"
-                  width={300}
-                  height={200}
-                  className="w-full h-auto rounded"
-                  id="img3"
-                  sizes="(max-width: 768px) 100vw, 300px"
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <main>
+      <table border={1} cellPadding={10} cellSpacing={0}>
+        <tr>
+          <th colSpan={3}>Deep Dive Into Moby-Dick</th>
+        </tr>
+        <tr>
+          <td>Posted By: Ivyne Muzenda</td>
+          <td></td>
+          <td>Date: 02/09/2025</td>
+        </tr>
+        <tr>
+          <th>Beginning</th>
+          <th>Middle</th>
+          <th>End</th>
+        </tr>
+        <tr>
+          <td>
+            In the beginning of Moby-Dick, Ishmael the narrator introduces himself, he gives us a clear background of his restless urge to go out to sea and feel free whenever he feels depressed or trapped on land. Seeking adventure and escape he joins a whaling voyage out of New Bedford, Massachusetts, setting the stage for the epic journey that follows.
+          </td>
+          <td>
+            As the novel progresses Ishmael and his new crew settle into life aboard a whaling ship Pequod. We get to know captain Ahab and his obsession with hunting a sperm whale, Moby-Dick, the creature that took his leg. The story shifts between day to day details of whaling life like the dangers of the sea or the rituals of hunting and a mix of cultures around sailors and Ahabs growing obsession to find and kill the whale at any cost
+          </td>
+          <td>
+            In the final part of the novel, Ahab finally finds Moby-Dick, A massive, deadly chase unfolds across the open sea. Despite the crew’s efforts, Ahab’s obsession carries them to disaster, Pequod is destroyed by the whale killing the crew but Ishmael, who clings in a lifeboat similar to that of a coffin floating alone at sea until he is saved, lives to tell the story, maybe marking the end of his adventures at sea <a href="">the end</a> of his sea adventures
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Image
+              src="https://i.postimg.cc/rwW1kqGZ/Screenshot-20250903-003701-Chrome.jpg"
+              alt="Beginning"
+              width={300}
+              height={200}
+              id="img1"
+            />
+          </td>
+          <td>
+            <Image
+              src="https://i.postimg.cc/fbD9QmRk/Screenshot-20250903-003919-Chrome.jpg"
+              alt="Middle"
+              width={300}
+              height={200}
+              id="img2"
+            />
+          </td>
+          <td>
+            <Image
+              src="https://i.postimg.cc/hGDrgfD4/Screenshot-20250903-004045-Chrome.jpg"
+              alt="End"
+              width={300}
+              height={200}
+              id="img3"
+            />
+          </td>
+        </tr>
+      </table>
     </main>
   )
 }
