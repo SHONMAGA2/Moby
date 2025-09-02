@@ -26,22 +26,27 @@ body {
 }
 
 
+/* Make table horizontally scrollable on small screens */
+.table-wrapper {
+  overflow-x: auto;
+}
+
 /* Entire table borders */
 table {
-  border-collapse: collapse; /* ensures borders don’t double up */
-  width: 100%; /* optional: makes table full-width */
-  border: 2px solid white; /* outer border */
+  border-collapse: collapse;
+  width: 100%;
+  border: 2px solid white;
 }
 
-/* All table cells and headers */
+/* Table cells */
 table th,
 table td {
-  border: 2px solid white; /* white borders for each cell */
-  padding: 0.5rem; /* optional: adds space inside cells */
-  text-align: left; /* optional: align text nicely */
+  border: 2px solid white;
+  padding: 0.5rem;
+  text-align: left;
 }
 
-/* Optional: keep images sized and with white borders */
+/* Images inside table */
 #img1,
 #img2,
 #img3 {
@@ -51,4 +56,20 @@ table td {
   border: 5px solid white;
   border-radius: 0.25rem;
   box-sizing: border-box;
+}
+
+/* Responsive text and image scaling on small screens */
+@media (max-width: 768px) {
+  #img1,
+  #img2,
+  #img3 {
+    width: 15rem;
+    height: 15rem;
+  }
+  
+  table th,
+  table td {
+    font-size: 0.8rem;
+    padding: 0.3rem;
+  }
 }
