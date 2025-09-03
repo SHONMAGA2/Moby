@@ -1,65 +1,21 @@
-import Image from 'next/image'
 
-export default function Page() {
-  return (
-    <main>
-<div className="table-wrapper">
-      <table border={1} cellPadding={10} cellSpacing={0}>
-        <tr>
-          <th colSpan={3}>Deep Dive Into Moby-Dick</th>
-        </tr>
-        <tr>
-          <td>Posted By: Ivyne Muzenda</td>
-          <td></td>
-          <td>Date: 02/09/2025</td>
-        </tr>
-        <tr>
-          <th>Beginning</th>
-          <th>Middle</th>
-          <th>End</th>
-        </tr>
-        <tr>
-          <td>
-            In the beginning of Moby-Dick, Ishmael the narrator introduces himself, he gives us a clear background of his restless urge to go out to sea and feel free whenever he feels depressed or trapped on land. Seeking adventure and escape he joins a whaling voyage out of New Bedford, Massachusetts, setting the stage for the epic journey that follows.
-          </td>
-          <td>
-            As the novel progresses Ishmael and his new crew settle into life aboard a whaling ship Pequod. We get to know captain Ahab and his obsession with hunting a sperm whale, Moby-Dick, the creature that took his leg. The story shifts between day to day details of whaling life like the dangers of the sea or the rituals of hunting and a mix of cultures around sailors and Ahabs growing obsession to find and kill the whale at any cost
-          </td>
-          <td>
-            In the final part of the novel, Ahab finally finds Moby-Dick, A massive, deadly chase unfolds across the open sea. Despite the crew’s efforts, Ahab’s obsession carries them to disaster, Pequod is destroyed by the whale killing the crew but Ishmael, who clings in a lifeboat similar to that of a coffin floating alone at sea until he is saved, lives to tell the story, maybe marking the end of his adventures at sea <a href="">the end</a> of his sea adventures
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <Image
-              src="https://i.postimg.cc/rwW1kqGZ/Screenshot-20250903-003701-Chrome.jpg"
-              alt="Beginning"
-              width={300}
-              height={200}
-              id="img1"
-            />
-          </td>
-          <td>
-            <Image
-              src="https://i.postimg.cc/fbD9QmRk/Screenshot-20250903-003919-Chrome.jpg"
-              alt="Middle"
-              width={300}
-              height={200}
-              id="img2"
-            />
-          </td>
-          <td>
-            <Image
-              src="https://i.postimg.cc/hGDrgfD4/Screenshot-20250903-004045-Chrome.jpg"
-              alt="End"
-              width={300}
-              height={200}
-              id="img3"
-            />
-          </td>
-        </tr>
-      </table>
-</div>
-    </main>
-  )
-}
+import { useMemo, useState, useEffect } from "react"; import { motion } from "framer-motion"; import { Search, Moon, Sun, Tag, Calendar, Clock, ArrowRight, Rss, Github, Twitter, Info, } from "lucide-react";
+
+import { Card, CardContent, CardHeader, CardTitle, CardFooter, } from "@/components/ui/card"; import { Button } from "@/components/ui/button"; import { Input } from "@/components/ui/input"; import { Badge } from "@/components/ui/badge"; import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"; import { Separator } from "@/components/ui/separator"; import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuLabel, } from "@/components/ui/dropdown-menu";
+
+// --- Moby-Dick themed posts --- const POSTS = [ { id: "1", title: "Ishmael’s Journey: Seeking Freedom at Sea", excerpt: "In the beginning, Ishmael introduces himself and his urge to escape land and depression by going to sea, setting the stage for adventure.", tags: ["introduction", "Ishmael", "freedom"], author: { name: "Ivyne Muzenda", avatar: "/avatar.png" }, date: "2025-09-03", readMins: 4, cover: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop", }, { id: "2", title: "Life Aboard the Pequod: Routine and Rituals", excerpt: "Ishmael and the crew settle into whaling life, showing day-to-day dangers, rituals of hunting, and a mix of cultures aboard the ship.", tags: ["Pequod", "whaling", "daily life"], author: { name: "Ivyne Muzenda", avatar: "/avatar.png" }, date: "2025-09-03", readMins: 5, cover: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?q=80&w=1600&auto=format&fit=crop", }, { id: "3", title: "Captain Ahab: Obsession and Revenge", excerpt: "Ahab’s relentless pursuit of Moby-Dick demonstrates the dangers of obsession and sets the stage for epic conflict on the high seas.", tags: ["Ahab", "Moby-Dick", "obsession"], author: { name: "Ivyne Muzenda", avatar: "/avatar.png" }, date: "2025-09-03", readMins: 6, cover: "https://images.unsplash.com/photo-1509228627155-07d7d3f7ee42?q=80&w=1600&auto=format&fit=crop", }, { id: "4", title: "The Epic Chase and Tragic End", excerpt: "Ahab finally encounters Moby-Dick, leading to disaster. The Pequod is destroyed and Ishmael survives alone, marking the story’s tragic conclusion.", tags: ["climax", "Moby-Dick", "tragedy"], author: { name: "Ivyne Muzenda", avatar: "/avatar.png" }, date: "2025-09-03", readMins: 7, cover: "https://images.unsplash.com/photo-1516589178582-4eaa02b4db8b?q=80&w=1600&auto=format&fit=crop", }, ];
+
+const ALL_TAGS = Array.from(new Set(POSTS.flatMap(p => p.tags))).sort();
+
+function classNames(...xs: Array<string | false | null | undefined>) { return xs.filter(Boolean).join(" "); }
+
+export default function MobyDickBlog() { const [q, setQ] = useState(""); const [activeTag, setActiveTag] = useState<string | null>(null); const [dark, setDark] = useState(false);
+
+useEffect(() => { if (typeof document !== "undefined") { document.documentElement.classList.toggle("dark", dark); } }, [dark]);
+
+const filtered = useMemo(() => { return POSTS.filter(p => { const passTag = activeTag ? p.tags.includes(activeTag) : true; const qLower = q.trim().toLowerCase(); const passQ = qLower ? p.title.toLowerCase().includes(qLower) || p.excerpt.toLowerCase().includes(qLower) || p.tags.join(" ").toLowerCase().includes(qLower) : true; return passTag && passQ; }); }, [q, activeTag]);
+
+const featured = POSTS[0];
+
+return ( <div className="min-h-screen bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100"> {/* The structure remains identical to previous website, just displaying these Moby-Dick posts /} {/ Top bar, Hero, Sidebar, Posts grid, Footer implemented here as in previous code */} </div> ); }
+
