@@ -1,4 +1,4 @@
-
+"use client";
 import { useMemo, useState, useEffect } from "react"; import { motion } from "framer-motion"; import { Search, Moon, Sun, Tag, Calendar, Clock, ArrowRight, Rss, Github, Twitter, Info, } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter, } from "@/components/ui/card"; import { Button } from "@/components/ui/button"; import { Input } from "@/components/ui/input"; import { Badge } from "@/components/ui/badge"; import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"; import { Separator } from "@/components/ui/separator"; import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuLabel, } from "@/components/ui/dropdown-menu";
